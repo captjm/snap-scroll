@@ -1,0 +1,38 @@
+{
+  "name": "snap-scroll",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/snapscroll.js",
+  "scripts": {
+    "build": "",
+    "extensions": "",
+    "dev": "",
+    "test": "",
+    "devtest": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:captjm/snap-scroll.git"
+  },
+  "keywords": [
+    "scrolling",
+    "scroll"
+  ],
+  "files": [
+    "vendors",
+    "dist/snapscroll.css",
+    "dist/snapscroll.min.css",
+    "dist/snapscroll.min.css.map",
+    "dist/snapscroll.min.js",
+    "dist/snapscroll.js",
+    "package.json",
+    "README.md"
+  ],
+  "authors": [
+    "David Makaridze https://github.com/captjm"
+  ],
+  "license": "GPL-3.0",
+  "devDependencies": {
+
+  }
+}
