@@ -1,7 +1,21 @@
 import "./scss/snap-scroll.scss";
-import RandomColor from "./js/RandomColor";
 import MouseWheel from "./js/MouseWheel";
 
+class NavBtn {
+    _el;
+    constructor(name, parent) {
+        this._el = document.createElement("div");
+        this._el.classList.add('ss-navigation-btn', "ss-" + name);
+        parent._el.appendChild(this._el);
+        let dir = null;
+        if (name === 'next') {
+            dir = "up";
+        } else if (name === 'prev') {
+            dir = "down";
+        }
+        this._el.onclick = () => parent.scroll(dir);
+    }
+}
 class Section {
     _el;
     _parent;
@@ -16,16 +30,14 @@ class Section {
 
     update() {
         this._el.style.height = this._parent._height + 'px';
-
-        this._el.style.backgroundColor = RandomColor.get();
-        this._el.innerHTML = `<h2>Section #${this._index}</h2>`;
     }
 }
 
-class SnapScroll {
+export default class SnapScroll {
     _options = {
         speed: 1,
         loop: false,
+        navigationButtons: true,
     }
     _el;
     _sections = [];
@@ -33,6 +45,8 @@ class SnapScroll {
     _position = 0;
     _sectionsWrapper;
     _completed = true;
+    _nextBtn;
+    _prevBtn;
 
     constructor(selector, options) {
         Object.assign(this._options, options);
@@ -42,6 +56,10 @@ class SnapScroll {
             this._sectionsWrapper = document.createElement('div');
             this._sectionsWrapper.classList.add("ss-sections-wrapper");
             this._el.appendChild(this._sectionsWrapper);
+            if (this._options.navigationButtons) {
+                this._nextBtn = new NavBtn("next", this);
+                this._prevBtn = new NavBtn("prev", this);
+            }
             this._sections = Array.from(this._el.querySelectorAll('.section')).map((el, index) => new Section(el, index, this));
             window.addEventListener("resize", () => this.update());
             window.addEventListener("keyup", (event) => {
@@ -105,5 +123,3 @@ class SnapScroll {
         }
     }
 }
-
-window.SnapScroll = SnapScroll;

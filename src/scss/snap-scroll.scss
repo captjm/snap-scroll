@@ -6,11 +6,39 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ss-navigation-btn {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .3s ease-out;
+  &:hover {
+    opacity: 1;
+  }
+}
+.ss-next {
+  background: url("../images/chevron-down-solid.svg");
+  bottom: 0;
+}
+
+.ss-prev {
+  background: url("../images/chevron-up-solid.svg");
+  top: 0;
 }
 .ss-sections-wrapper {
+  width: 100%;
   .section {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 }
