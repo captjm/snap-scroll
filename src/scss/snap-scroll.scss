@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.ss-wrapper {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+.ss-sections-wrapper {
+  .section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
